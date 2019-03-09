@@ -2,6 +2,7 @@
 play.seichi.click向けのMinecraft MODです  
 Forge 1.10.2で使えます  
 
+
 機能  
 1.ギガンティックリスト  
 これまでに引いたGiganticの数をGUIに一覧で表示します  
