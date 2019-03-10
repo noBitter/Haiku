@@ -9,13 +9,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.ArrayList;
 
 public class HaikuListener {
-    //tellraw @p {"text":""}
-    //[a]uokenがガチャでGigantic☆大当たり！
-    //HERCULESを
-    //APOLLOを
-    //tellraw @p {"text":"aがログインしました"}
-    ///tellraw @p {"text":"[Tips]tips"}
-
     @SubscribeEvent
     public void onChat(ClientChatReceivedEvent event){
         if(!Haiku.getInstance().isSeichiClick()){
@@ -163,7 +156,7 @@ public class HaikuListener {
         }
 
         if(!Haiku.getInstance().isShowWorldSaveChat() &&
-                (line.equals("ワールドデータセーブ中…")) || line.equals("ワールドデータセーブ完了")){
+                (line.equals("ワールドセーブ中....")) || line.equals("ワールドセーブ完了")){
             event.setCanceled(true);
         }
     }
