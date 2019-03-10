@@ -36,7 +36,7 @@ public class HaikuGuiScreenSecond extends GuiScreen {
         this.buttonList.add(new GuiButton(9,this.width / 2 - 205, this.height / 2 + 2,
                 "Saving Player Data: " + (Haiku.getInstance().isShowPlayerSaveChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(10,this.width / 2 - 205, this.height / 2 + 26,
-                "Saving World Data: " + (Haiku.getInstance().isShowWorldSaveChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
+                "Saving World: " + (Haiku.getInstance().isShowWorldSaveChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
     }
 
     public void actionPerformed(GuiButton guiButton){
@@ -50,8 +50,6 @@ public class HaikuGuiScreenSecond extends GuiScreen {
                     break;
                 case 1:
                     Haiku.getInstance().setShowGui(true);
-
-                    Haiku.getInstance().getMc().thePlayer.closeScreen();
                     break;
                 case 2:
                     Haiku.getInstance().setShowClearLagChat(!Haiku.getInstance().isShowClearLagChat());
@@ -87,7 +85,7 @@ public class HaikuGuiScreenSecond extends GuiScreen {
                 case 10:
                     Haiku.getInstance().setShowWorldSaveChat(!Haiku.getInstance().isShowWorldSaveChat());
 
-                    guiButton.displayString = ("Saving World Data: " + (Haiku.getInstance().isShowWorldSaveChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
+                    guiButton.displayString = ("Saving World: " + (Haiku.getInstance().isShowWorldSaveChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
             }
     }
 

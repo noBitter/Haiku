@@ -76,8 +76,6 @@ public class HaikuGuiScreen extends GuiScreen {
                     break;
                 case 16:
                     Haiku.getInstance().setShowGuiSecond(true);
-
-                    Haiku.getInstance().getMc().thePlayer.closeScreen();
             }
         }
     }
