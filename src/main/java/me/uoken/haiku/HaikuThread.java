@@ -5,7 +5,9 @@ public class HaikuThread implements Runnable {
         try {
             Thread.sleep(50);
 
-            Haiku.getInstance().getMc().thePlayer.addChatMessage(Haiku.getInstance().getAddChatMessage());
+            if(Haiku.getInstance().getAddChatMessage() != null) {
+                Haiku.getInstance().getMc().thePlayer.addChatMessage(Haiku.getInstance().getAddChatMessage());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

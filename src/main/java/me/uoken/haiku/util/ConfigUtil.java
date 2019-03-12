@@ -16,6 +16,7 @@ public class ConfigUtil {
                 CONFIG_FILE.getParentFile().mkdirs();
                 CONFIG_FILE.createNewFile();
             }
+
             FileWriter writer = new FileWriter(CONFIG_FILE, false);
 
             writer.write(Haiku.getInstance().getHitApollo() + "\n" + Haiku.getInstance().getHitIcarus() + "\n" + Haiku.getInstance().getHitNemesis() + "\n"
@@ -24,7 +25,10 @@ public class ConfigUtil {
                     + Haiku.getInstance().getHitArthur() + "\n" + Haiku.getInstance().isShowBuffCounter() + "\n" + Haiku.getInstance().isShowRankingCounter() + "\n"
                     + Haiku.getInstance().isShowGiganticCounter() + "\n" + Haiku.getInstance().isShowTipsChat() + "\n" + Haiku.getInstance().isShowClearLagChat() + "\n"
                     + Haiku.getInstance().isShowWinChat() + "\n" + Haiku.getInstance().isShowGreatWinChat() + "\n" + Haiku.getInstance().isShowFlyChat() + "\n"
-                    + Haiku.getInstance().isShowLoggedInChat() + "\n" + Haiku.getInstance().isShowPlayerSaveChat() + "\n" + Haiku.getInstance().isShowWorldSaveChat());
+                    + Haiku.getInstance().isShowLoggedInChat() + "\n" + Haiku.getInstance().isShowOtherGiganticHit() + "\n" + Haiku.getInstance().isShowSaveChat() + "\n"
+                    + Haiku.getInstance().isShowGachaCountChat() + "\n" + Haiku.getInstance().isShowBuffChat()
+            );
+
             writer.close();
         }
         catch (IOException e)
@@ -94,9 +98,13 @@ public class ConfigUtil {
                     case 19:
                         Haiku.getInstance().setShowLoggedInChat(Boolean.valueOf(line));
                     case 20:
-                        Haiku.getInstance().setShowPlayerSaveChat(Boolean.valueOf(line));
+                        Haiku.getInstance().setShowOtherGiganticHit(Boolean.valueOf(line));
                     case 21:
-                        Haiku.getInstance().setShowWorldSaveChat(Boolean.valueOf(line));
+                        Haiku.getInstance().setShowSaveChat(Boolean.valueOf(line));
+                    case 22:
+                        Haiku.getInstance().setShowGachaCountChat(Boolean.valueOf(line));
+                    case 23:
+                        Haiku.getInstance().setShowBuffChat(Boolean.valueOf(line));
                 }
             }
 

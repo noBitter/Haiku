@@ -18,57 +18,61 @@ public class HaikuListener {
         String line = TextFormatting.getTextWithoutFormattingCodes(event.getMessage().getUnformattedText());
         char firstCharacter = line.charAt(0);
 
-        if(line.startsWith("★採掘速度上昇レベルが")){
+        if(line.startsWith(Reference.BUFF_LINE)){
             Haiku.getInstance().setCountBuff(Haiku.getInstance().getCountBuff() + 1);
 
             if(!Haiku.getInstance().isShowBuffCounter() && !Haiku.getInstance().isShowRankingCounter()){
-                return;
+                Haiku.getInstance().setAddChatMessage(null);
             }else if(Haiku.getInstance().isShowBuffCounter() && !Haiku.getInstance().isShowRankingCounter()){
                 Haiku.getInstance().setAddChatMessage(new TextComponentString(
-                        "Buff Counter: " + Haiku.getInstance().getCountBuff()
+                        Reference.BUFF_COUNTER_MESSAGE + Haiku.getInstance().getCountBuff()
                 ));
             }else if(!Haiku.getInstance().isShowBuffCounter() && Haiku.getInstance().isShowRankingCounter()){
                 Haiku.getInstance().setAddChatMessage(new TextComponentString(
-                        "Ranking Counter: " + Haiku.getInstance().getCountRanking()
+                        Reference.RANKING_COUNTER_MESSAGE + Haiku.getInstance().getCountRanking()
                 ));
             }else if(Haiku.getInstance().isShowBuffCounter() && Haiku.getInstance().isShowRankingCounter()){
-                Haiku.getInstance().setAddChatMessage(new TextComponentString(String.format(
-                        "%s%n%s", "Buff Counter: " + Haiku.getInstance().getCountBuff(), "Ranking Counter: " + Haiku.getInstance().getCountRanking()
-                )));
+                Haiku.getInstance().setAddChatMessage(new TextComponentString(
+                        Reference.BUFF_COUNTER_MESSAGE + Haiku.getInstance().getCountBuff() + "\n" + Reference.RANKING_COUNTER_MESSAGE + Haiku.getInstance().getCountRanking()
+                ));
             }
 
             Haiku.THREAD_POOL.submit(new HaikuThread());
+
+            if(!Haiku.getInstance().isShowBuffChat()){
+                event.setCanceled(true);
+            }
         }
 
-        if(line.equals("--------------30分間整地ランキング--------------")){
+        if(line.equals(Reference.RANKING_LINE)){
             Haiku.getInstance().setCountBuff(0);
             Haiku.getInstance().setCountRanking(Haiku.getInstance().getCountRanking() + 1);
 
             if(Haiku.getInstance().isShowRankingCounter()) {
                 Haiku.getInstance().setAddChatMessage(new TextComponentString(
-                        "Ranking Counter: " + Haiku.getInstance().getCountRanking()
+                        Reference.RANKING_COUNTER_MESSAGE + Haiku.getInstance().getCountRanking()
                 ));
 
                 Haiku.THREAD_POOL.submit(new HaikuThread());
             }
         }
 
-        if(line.startsWith("[") && (line.endsWith("]" + Haiku.getInstance().getMc().thePlayer.getDisplayNameString() + "がガチャでGigantic☆大当たり！"))){
-            Haiku.getInstance().setInputNextChatLine(true);
+        if(line.startsWith("[") && (line.endsWith("]" + Haiku.getInstance().getMc().thePlayer.getDisplayNameString() + Reference.GT_TRIGGER_LINE))){
+            Haiku.getInstance().setInputGiganticNameChat(true);
         }
 
-        if((Haiku.getInstance().isInputNextChatLine()) &&
+        if((Haiku.getInstance().isInputGiganticNameChat()) &&
                 (line.startsWith("A") || line.startsWith("I") || line.startsWith("N") || line.startsWith("H") || line.startsWith("P") || line.startsWith("T") || line.startsWith("G")) &&
-                line.endsWith("を引きました！おめでとうございます！")){
+                line.endsWith(Reference.GT_NAME_LINE)){
 
-            ArrayList<Character> giganticNameCh = new ArrayList<Character>();
+            ArrayList<Character> giganticNameCh = new ArrayList<>();
 
             for(int i = 0; line.charAt(i) != 'を'; i++){
                 giganticNameCh.add(line.charAt(i));
             }
 
             String giganticNameStr = Haiku.getInstance().getStringRepresentation(giganticNameCh);
-            String giganticHitNumStr = "";
+            String giganticHitNumStr = null;
 
             switch(giganticNameStr) {
                 case "APOLLO":
@@ -120,44 +124,63 @@ public class HaikuListener {
 
             ConfigUtil.saveConfig();
 
-            Haiku.getInstance().setInputNextChatLine(false);
+            Haiku.getInstance().setInputGiganticNameChat(false);
         }
 
-        if(!Haiku.getInstance().isShowWinChat() && line.startsWith("おめでとう！当たり！")){
+        if(!Haiku.getInstance().isShowWinChat() && line.startsWith(Reference.WINNING_LINE)){
             event.setCanceled(true);
         }
 
-        if(!Haiku.getInstance().isShowGreatWinChat() && line.startsWith("おめでとう‼︎大当たり！")){
+        if(!Haiku.getInstance().isShowGreatWinChat() && (line.startsWith(Reference.GREAT_WINNING_LINE_1) || line.startsWith(Reference.GREAT_WINNING_LINE_2))){
             event.setCanceled(true);
         }
 
-        if(!Haiku.getInstance().isShowTipsChat() && line.startsWith("[Tips]")){
+        if(!Haiku.getInstance().isShowTipsChat() && line.startsWith(Reference.TIPS_LINE)){
             event.setCanceled(true);
         }
 
-        if(!Haiku.getInstance().isShowFlyChat() && line.equals("Fly効果は無期限で継続中です")){
+        if(!Haiku.getInstance().isShowFlyChat() && line.equals(Reference.UNLIMITED_FLYING_LINE)){
             event.setCanceled(true);
         }
 
         if(!Haiku.getInstance().isShowLoggedInChat() &&
                 (('a' <= firstCharacter && firstCharacter <= 'z') || ('A' <= firstCharacter && firstCharacter <= 'Z') || ('0' <= firstCharacter && firstCharacter <= '9') || line.startsWith("_"))
-                && line.endsWith("がログインしました") ){
+                && line.endsWith(Reference.PLAYER_LOGGEDIN_LINE) ){
             event.setCanceled(true);
         }
 
         if(!Haiku.getInstance().isShowClearLagChat() &&
-                line.startsWith("[ClearLag]")){
+                line.startsWith(Reference.CLEARLAG_LINE)){
             event.setCanceled(true);
         }
 
-        if(!Haiku.getInstance().isShowPlayerSaveChat() &&
-                (line.equals("プレイヤーデータセーブ中…") || line.equals("プレイヤーデータセーブ完了"))){
+        if(!Haiku.getInstance().isShowSaveChat() &&
+                (line.equals(Reference.SAVED_WORLD_LINE) || line.equals(Reference.SAVING_WORLD_LINE) ||
+                        (line.equals(Reference.SAVING_PLAYERDATA_LINE) || line.equals(Reference.SAVED_PLAYERDATA_LINE)))){
             event.setCanceled(true);
         }
 
-        if(!Haiku.getInstance().isShowWorldSaveChat() &&
-                (line.equals("ワールドセーブ中....")) || line.equals("ワールドセーブ完了")){
+        if(!Haiku.getInstance().isShowGachaCountChat() &&
+                ('0' <= firstCharacter && firstCharacter <= '9') &&
+                (line.endsWith(Reference.GACHA_COUNT_LINE))){
             event.setCanceled(true);
+        }
+
+        if(line.startsWith("[") &&
+                !(line.endsWith("]" + Haiku.getInstance().getMc().thePlayer.getDisplayNameString() + Reference.GT_TRIGGER_LINE)) &&
+                (line.endsWith(Reference.GT_TRIGGER_LINE)) &&
+                !(Haiku.getInstance().isShowOtherGiganticHit())){
+            Haiku.getInstance().setRemoveGiganticNameChat(true);
+
+            event.setCanceled(true);
+        }
+
+        if(Haiku.getInstance().isRemoveGiganticNameChat() &&
+                (line.startsWith("A") || line.startsWith("I") || line.startsWith("N") || line.startsWith("H") || line.startsWith("P") || line.startsWith("T") || line.startsWith("G")) &&
+                (line.endsWith(Reference.GT_NAME_LINE))){
+            event.setCanceled(true);
+
+            Haiku.getInstance().setRemoveGiganticNameChat(false);
         }
     }
 }

@@ -48,10 +48,13 @@ public class HaikuGuiScreen extends GuiScreen {
         this.buttonList.add(new GuiButton(14, this.width / 2 - 60, this.height / 2 + 48, 0, 0,
                 "Artemis: " + Haiku.getInstance().getHitArtemis()));
 
-        this.buttonList.add(new GuiButton(15, this.width / 2 + 150, this.height / 2 + 110, 0, 0,
+        this.buttonList.add(new GuiButton(15, this.width / 2 + 170, this.height / 2 + 110, 0, 0,
                 "Haiku by uoken"));
 
-        this.buttonList.add(new GuiButton(16, this.width / 2 + 180, this.height / 2 + 80, 20, 20, ">"));
+        this.buttonList.add(new GuiButton(16, this.width / 2 + 180, this.height / 2 + 80, 20, 20,
+                ">"));
+        this.buttonList.add(new GuiButton(17, this.width / 2 + 190, this.height / 2 - 115, 20, 20,
+                "x"));
     }
 
     protected void actionPerformed(GuiButton guiButton){
@@ -76,6 +79,10 @@ public class HaikuGuiScreen extends GuiScreen {
                     break;
                 case 16:
                     Haiku.getInstance().setShowGuiSecond(true);
+
+                    break;
+                case 17:
+                    Haiku.getInstance().getMc().thePlayer.closeScreen();
             }
         }
     }
