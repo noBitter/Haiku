@@ -1,7 +1,9 @@
-# Haiku
+# Haiku  
 play.seichi.click向けのMinecraft MODです  
 Forge 1.10.2で使えます  
+[ダウンロード バージョン1.0](https://www.mediafire.com/file/3kh06a21x03xzxt/Haiku-1.0.jar/file)  
   
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 機能  
@@ -13,6 +15,9 @@ Forge 1.10.2で使えます
 >>>>>>> f5031291594644b0b68f11997f98ca7a796725c5
 
 機能
+=======
+**機能**
+>>>>>>> origin/master
 1. ギガンティックリスト  
 これまでに引いたギガンティックの数をGUIに一覧で表示します  
 
