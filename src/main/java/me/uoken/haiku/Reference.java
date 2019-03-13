@@ -22,7 +22,8 @@ public class Reference {
     public static final String SAVED_PLAYERDATA_LINE = "プレイヤーデータセーブ完了";
     public static final String SAVING_WORLD_LINE = "ワールドセーブ中....";
     public static final String SAVED_WORLD_LINE = "ワールドセーブ完了";
-    public static final String BACKUP_LINE = "バックアップ中....";
+    public static final String BACKUPING_LINE = "バックアップ中....";
+    public static final String BACKUPED_LINE = "バックアップ完了";
     public static final String GACHA_COUNT_LINE = "回ガチャを回しました。";
 
     public static final String BUFF_COUNTER_MESSAGE = "Buff Counter: ";

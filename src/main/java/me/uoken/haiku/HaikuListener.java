@@ -156,7 +156,7 @@ public class HaikuListener {
         if(!Haiku.getInstance().isShowSaveChat() &&
                 (line.equals(Reference.SAVED_WORLD_LINE) || line.equals(Reference.SAVING_WORLD_LINE) ||
                         (line.equals(Reference.SAVING_PLAYERDATA_LINE) || line.equals(Reference.SAVED_PLAYERDATA_LINE)) ||
-                        (line.equals(Reference.BACKUP_LINE)))){
+                        (line.equals(Reference.BACKUPING_LINE) || line.equals(Reference.BACKUPED_LINE)))){
             event.setCanceled(true);
         }
 
