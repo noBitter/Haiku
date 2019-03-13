@@ -3,7 +3,7 @@ package me.uoken.haiku;
 public class Reference {
     public static final String MOD_ID = "haiku";
     public static final String MOD_NAME = "Haiku";
-    public static final String MOD_VERSION = "1.0.1";
+    public static final String MOD_VERSION = "1.0.2";
     public static final String MC_VERSION = "1.10.2";
 
     public static final String BUFF_LINE = "★採掘速度上昇レベルが";
@@ -21,6 +21,7 @@ public class Reference {
     public static final String SAVED_PLAYERDATA_LINE = "プレイヤーデータセーブ完了";
     public static final String SAVING_WORLD_LINE = "ワールドセーブ中....";
     public static final String SAVED_WORLD_LINE = "ワールドセーブ完了";
+    public static final String BACKUP_LINE = "バックアップ中....";
     public static final String GACHA_COUNT_LINE = "回ガチャを回しました。";
 
     public static final String BUFF_COUNTER_MESSAGE = "Buff Counter: ";

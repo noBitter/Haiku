@@ -22,9 +22,9 @@ public class HaikuGuiScreenSecond extends GuiScreen {
         this.buttonList.add(new GuiButton(2,this.width / 2 - 205, this.height / 2 - 34,
                 TextFormatting.GOLD + "[ClearLag]" + TextFormatting.WHITE + ": " + (Haiku.getInstance().isShowClearLagChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(3,this.width / 2 - 205, this.height / 2 + 14,
-                "Hit: " + (Haiku.getInstance().isShowWinChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
+                "Hit & Great Hit: " + (Haiku.getInstance().isShowCommonHitChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(4,this.width / 2 - 205, this.height / 2 + 38,
-                "Great Hit: " + (Haiku.getInstance().isShowGreatWinChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
+                "Gigantic Hit(You): " + (Haiku.getInstance().isShowGiganticHitChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(5,this.width / 2 + 5, this.height / 2 + 38,
                 "Unlimited Flying: " + (Haiku.getInstance().isShowFlyChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(6,this.width / 2 + 5, this.height / 2 + 14,
@@ -32,11 +32,11 @@ public class HaikuGuiScreenSecond extends GuiScreen {
         this.buttonList.add(new GuiButton(7,this.width / 2 , this.height / 2 - 84, 0, 0,
                 "Mute Settings"));
         this.buttonList.add(new GuiButton(8, this.width / 2 + 170, this.height / 2 + 110, 0, 0,
-                "Haiku by uoken"));
+                TextFormatting.GRAY + "Haiku by uoken"));
         this.buttonList.add(new GuiButton(9,this.width / 2 + 5, this.height / 2 - 58,
-                "Hit Gigantic (Other Player): " + (Haiku.getInstance().isShowOtherGiganticHit() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
+                "Gigantic Hit(Other Player): " + (Haiku.getInstance().isShowOtherGiganticHit() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(10,this.width / 2 + 5, this.height / 2 - 34,
-                "Save Data: " + (Haiku.getInstance().isShowSaveChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
+                "Save & Backup: " + (Haiku.getInstance().isShowSaveChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(11, this.width / 2 - 205, this.height / 2 - 10,
                 "Gacha Count: " + (Haiku.getInstance().isShowGachaCountChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(12, this.width / 2 + 5, this.height / 2 - 10,
@@ -67,15 +67,15 @@ public class HaikuGuiScreenSecond extends GuiScreen {
 
                     break;
                 case 3:
-                    Haiku.getInstance().setShowWinChat(!Haiku.getInstance().isShowWinChat());
+                    Haiku.getInstance().setShowCommonHitChat(!Haiku.getInstance().isShowCommonHitChat());
 
-                    guiButton.displayString = ("Hit: " + (Haiku.getInstance().isShowWinChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
+                    guiButton.displayString = ("Hit & Great Hit: " + (Haiku.getInstance().isShowCommonHitChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
 
                     break;
                 case 4:
-                    Haiku.getInstance().setShowGreatWinChat(!Haiku.getInstance().isShowGreatWinChat());
+                    Haiku.getInstance().setShowGiganticHitChat(!Haiku.getInstance().isShowGiganticHitChat());
 
-                    guiButton.displayString = ("Great Hit: " + (Haiku.getInstance().isShowGreatWinChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
+                    guiButton.displayString = ("Gigantic Hit(You): " + (Haiku.getInstance().isShowGiganticHitChat() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
 
                     break;
                 case 5:

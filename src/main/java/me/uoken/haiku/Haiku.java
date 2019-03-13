@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,15 +27,11 @@ public class Haiku {
     private int countBuff = 0;
     private int countRanking = 0;
     private static Haiku instance;
-    private int hitApollo = 0, hitIcarus = 0, hitNemesis = 0, hitHercules = 0, hitPluto = 0, hitThanatos = 0, hitGaea = 0, hitTitan = 0, hitArtemis = 0, hitArthur = 0;
     private ITextComponent addChatMessage;
     public static final ExecutorService THREAD_POOL;
-    private boolean inputGiganticNameChat = false;
     private boolean showBuffCounter = true, showRankingCounter = true, showGiganticCounter = true;
     private boolean showGui = false;
     private boolean showGuiSecond = false;
-    private boolean showWinChat = false;
-    private boolean showGreatWinChat = false;
     private boolean showFlyChat = false;
     private boolean showLoggedInChat = false;
     private boolean showClearLagChat = false;
@@ -46,6 +42,10 @@ public class Haiku {
     private boolean showBuffChat = false;
     private boolean removeGiganticNameChat = false;
     private boolean showOtherGiganticHit = false;
+    private boolean showGiganticHitChat = false;
+    private boolean showCommonHitChat = false;
+    //private int hitApollo = 0, hitIcarus = 0, hitNemesis = 0, hitHercules = 0, hitPluto = 0, hitThanatos = 0, hitGaea = 0, hitTitan = 0, hitArtemis = 0, hitArthur = 0;
+    //private boolean inputGiganticNameChat = false;
 
     static {
         THREAD_POOL = Executors.newCachedThreadPool(new HaikuThreadFactory());
@@ -109,7 +109,7 @@ public class Haiku {
     public void playerLoggedIn(final FMLNetworkEvent.ClientConnectedToServerEvent event){
         this.onSeichiClick = (!this.mc.isSingleplayer() && event.getManager().getRemoteAddress().toString().toLowerCase().contains("play.seichi.click"));
     }
-
+    /*
     public String getStringRepresentation(final ArrayList<Character> list){
         StringBuilder builder = new StringBuilder(list.size());
 
@@ -118,8 +118,8 @@ public class Haiku {
         }
 
         return builder.toString();
-    }
-
+    }*/
+    /*
     public void setHitApollo(int hitApollo){
         this.hitApollo = hitApollo;
     }
@@ -199,7 +199,7 @@ public class Haiku {
     public int getHitArthur(){
         return this.hitArthur;
     }
-
+    */
     public int getCountBuff(){
         return this.countBuff;
     }
@@ -223,7 +223,7 @@ public class Haiku {
     public ITextComponent getAddChatMessage(){
         return this.addChatMessage;
     }
-
+    /*
     public void setInputGiganticNameChat(boolean inputNextLine){
         this.inputGiganticNameChat = inputNextLine;
     }
@@ -231,7 +231,7 @@ public class Haiku {
     public boolean isInputGiganticNameChat(){
         return this.inputGiganticNameChat;
     }
-
+    */
     public boolean isShowBuffCounter() {
         return this.showBuffCounter;
     }
@@ -260,14 +260,6 @@ public class Haiku {
         this.showGui = showGui;
     }
 
-    public boolean isShowWinChat() {
-        return this.showWinChat;
-    }
-
-    public boolean isShowGreatWinChat() {
-        return this.showGreatWinChat;
-    }
-
     public boolean isShowFlyChat() {
         return this.showFlyChat;
     }
@@ -278,14 +270,6 @@ public class Haiku {
 
     public boolean isShowClearLagChat() {
         return this.showClearLagChat;
-    }
-
-    public void setShowWinChat(boolean showWinChat) {
-        this.showWinChat = showWinChat;
-    }
-
-    public void setShowGreatWinChat(boolean showGreatWinChat) {
-        this.showGreatWinChat = showGreatWinChat;
     }
 
     public void setShowFlyChat(boolean showFlyChat) {
@@ -354,5 +338,21 @@ public class Haiku {
 
     public void setShowSaveChat(boolean showSaveChat) {
         this.showSaveChat = showSaveChat;
+    }
+
+    public boolean isShowGiganticHitChat() {
+        return this.showGiganticHitChat;
+    }
+
+    public void setShowGiganticHitChat(boolean giganticHitChat){
+        this.showGiganticHitChat = giganticHitChat;
+    }
+
+    public boolean isShowCommonHitChat() {
+        return this.showCommonHitChat;
+    }
+
+    public void setShowCommonHitChat(boolean showCommonHitChat) {
+        this.showCommonHitChat = showCommonHitChat;
     }
 }

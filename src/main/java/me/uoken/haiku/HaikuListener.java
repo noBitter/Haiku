@@ -1,12 +1,12 @@
 package me.uoken.haiku;
 
-import me.uoken.haiku.util.ConfigUtil;
+//import me.uoken.haiku.util.ConfigUtil;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class HaikuListener {
     @SubscribeEvent
@@ -17,6 +17,7 @@ public class HaikuListener {
 
         String line = TextFormatting.getTextWithoutFormattingCodes(event.getMessage().getUnformattedText());
         char firstCharacter = line.charAt(0);
+
 
         if(line.startsWith(Reference.BUFF_LINE)){
             Haiku.getInstance().setCountBuff(Haiku.getInstance().getCountBuff() + 1);
@@ -56,7 +57,7 @@ public class HaikuListener {
                 Haiku.THREAD_POOL.submit(new HaikuThread());
             }
         }
-
+        /*
         if(line.startsWith("[") && (line.endsWith("]" + Haiku.getInstance().getMc().thePlayer.getDisplayNameString() + Reference.GT_TRIGGER_LINE))){
             Haiku.getInstance().setInputGiganticNameChat(true);
         }
@@ -125,13 +126,11 @@ public class HaikuListener {
             ConfigUtil.saveConfig();
 
             Haiku.getInstance().setInputGiganticNameChat(false);
-        }
+        }*/
 
-        if(!Haiku.getInstance().isShowWinChat() && line.startsWith(Reference.WINNING_LINE)){
-            event.setCanceled(true);
-        }
-
-        if(!Haiku.getInstance().isShowGreatWinChat() && (line.startsWith(Reference.GREAT_WINNING_LINE_1) || line.startsWith(Reference.GREAT_WINNING_LINE_2))){
+        if(!Haiku.getInstance().isShowCommonHitChat() &&
+                line.startsWith(Reference.WINNING_LINE) ||
+                (line.startsWith(Reference.GREAT_WINNING_LINE_1) || line.startsWith(Reference.GREAT_WINNING_LINE_2))){
             event.setCanceled(true);
         }
 
@@ -156,7 +155,8 @@ public class HaikuListener {
 
         if(!Haiku.getInstance().isShowSaveChat() &&
                 (line.equals(Reference.SAVED_WORLD_LINE) || line.equals(Reference.SAVING_WORLD_LINE) ||
-                        (line.equals(Reference.SAVING_PLAYERDATA_LINE) || line.equals(Reference.SAVED_PLAYERDATA_LINE)))){
+                        (line.equals(Reference.SAVING_PLAYERDATA_LINE) || line.equals(Reference.SAVED_PLAYERDATA_LINE)) ||
+                        (line.equals(Reference.BACKUP_LINE)))){
             event.setCanceled(true);
         }
 
@@ -166,10 +166,16 @@ public class HaikuListener {
             event.setCanceled(true);
         }
 
-        if(line.startsWith("[") &&
+        if(!(Haiku.getInstance().isShowOtherGiganticHit()) &&
                 !(line.endsWith("]" + Haiku.getInstance().getMc().thePlayer.getDisplayNameString() + Reference.GT_TRIGGER_LINE)) &&
-                (line.endsWith(Reference.GT_TRIGGER_LINE)) &&
-                !(Haiku.getInstance().isShowOtherGiganticHit())){
+                line.startsWith("[") &&(line.endsWith(Reference.GT_TRIGGER_LINE))){
+            Haiku.getInstance().setRemoveGiganticNameChat(true);
+
+            event.setCanceled(true);
+        }
+
+        if(!Haiku.getInstance().isShowGiganticHitChat() &&
+                line.startsWith("[") && (line.endsWith("]" + Haiku.getInstance().getMc().thePlayer.getDisplayNameString() + Reference.GT_TRIGGER_LINE))){
             Haiku.getInstance().setRemoveGiganticNameChat(true);
 
             event.setCanceled(true);

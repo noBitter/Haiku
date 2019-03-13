@@ -14,15 +14,15 @@ public class HaikuGuiScreen extends GuiScreen {
     }
 
     public void initGui() {
-        this.buttonList.add(new GuiButton(0, this.width / 2 + 5, this.height / 2 - 34,
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2 - 34,
                 "Buff Counter: " + (Haiku.getInstance().isShowBuffCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
-        this.buttonList.add(new GuiButton(1, this.width / 2 + 5, this.height / 2 - 10,
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2 - 10,
                 "Ranking Counter: " + (Haiku.getInstance().isShowRankingCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
-        this.buttonList.add(new GuiButton(2, this.width / 2 + 5, this.height / 2 + 14,
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 2 + 14,
                 "Gigantic Counter: " + (Haiku.getInstance().isShowGiganticCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
-        this.buttonList.add(new GuiButton(3, this.width / 2 + 100, this.height / 2 - 84, 0, 0,
+        this.buttonList.add(new GuiButton(3, this.width / 2 , this.height / 2 - 84, 0, 0,
                 "Chat Settings"));
-
+        /*
         this.buttonList.add(new GuiButton(4, this.width / 2 - 100, this.height / 2 - 84, 0, 0,
                 "Gigantic List"));
 
@@ -47,9 +47,9 @@ public class HaikuGuiScreen extends GuiScreen {
                 "Titan: " + Haiku.getInstance().getHitTitan()));
         this.buttonList.add(new GuiButton(14, this.width / 2 - 60, this.height / 2 + 48, 0, 0,
                 "Artemis: " + Haiku.getInstance().getHitArtemis()));
-
+        */
         this.buttonList.add(new GuiButton(15, this.width / 2 + 170, this.height / 2 + 110, 0, 0,
-                "Haiku by uoken"));
+                TextFormatting.GRAY + "Haiku by uoken"));
 
         this.buttonList.add(new GuiButton(16, this.width / 2 + 180, this.height / 2 + 80, 20, 20,
                 ">"));
