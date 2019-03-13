@@ -14,12 +14,10 @@ public class HaikuGuiScreen extends GuiScreen {
     }
 
     public void initGui() {
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2 - 34,
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2 - 22,
                 "Buff Counter: " + (Haiku.getInstance().isShowBuffCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2 - 10,
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2 + 2,
                 "Ranking Counter: " + (Haiku.getInstance().isShowRankingCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
-        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 2 + 14,
-                "Gigantic Counter: " + (Haiku.getInstance().isShowGiganticCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide ")));
         this.buttonList.add(new GuiButton(3, this.width / 2 , this.height / 2 - 84, 0, 0,
                 "Chat Settings"));
         /*
@@ -71,11 +69,6 @@ public class HaikuGuiScreen extends GuiScreen {
 
                     guiButton.displayString = ("Ranking Counter: " + (Haiku.getInstance().isShowRankingCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
 
-                    break;
-                case 2:
-                    Haiku.getInstance().setShowGiganticCounter(!Haiku.getInstance().isShowGiganticCounter());
-
-                    guiButton.displayString = ("Gigantic Counter: " + (Haiku.getInstance().isShowGiganticCounter() ? TextFormatting.GREEN + "Show" : TextFormatting.RED + "Hide "));
                     break;
                 case 16:
                     Haiku.getInstance().setShowGuiSecond(true);

@@ -23,7 +23,7 @@ public class ConfigUtil {
                     + Haiku.getInstance().getHitHercules() + "\n" + Haiku.getInstance().getHitPluto() + "\n" + Haiku.getInstance().getHitThanatos() + "\n"
                     + Haiku.getInstance().getHitGaea() + "\n" + Haiku.getInstance().getHitTitan() + "\n" + Haiku.getInstance().getHitArtemis() + "\n"
                     + Haiku.getInstance().getHitArthur() + "\n" + */Haiku.getInstance().isShowBuffCounter() + "\n" + Haiku.getInstance().isShowRankingCounter() + "\n"
-                    + Haiku.getInstance().isShowGiganticCounter() + "\n" + Haiku.getInstance().isShowTipsChat() + "\n" + Haiku.getInstance().isShowClearLagChat() + "\n"
+                    + Haiku.getInstance().isShowTipsChat() + "\n" + Haiku.getInstance().isShowClearLagChat() + "\n"
                     + Haiku.getInstance().isShowCommonHitChat() + "\n" + Haiku.getInstance().isShowGiganticHitChat() + "\n" + Haiku.getInstance().isShowFlyChat() + "\n"
                     + Haiku.getInstance().isShowLoggedInChat() + "\n" + Haiku.getInstance().isShowOtherGiganticHit() + "\n" + Haiku.getInstance().isShowSaveChat() + "\n"
                     + Haiku.getInstance().isShowGachaCountChat() + "\n" + Haiku.getInstance().isShowBuffChat() + "\n" + Haiku.getInstance().isShowGiganticHitChat()
@@ -84,28 +84,26 @@ public class ConfigUtil {
                     case 2:
                         Haiku.getInstance().setShowRankingCounter(Boolean.valueOf(line));
                     case 3:
-                        Haiku.getInstance().setShowGiganticCounter(Boolean.valueOf(line));
-                    case 4:
                         Haiku.getInstance().setShowTipsChat(Boolean.valueOf(line));
-                    case 5:
+                    case 4:
                         Haiku.getInstance().setShowClearLagChat(Boolean.valueOf(line));
-                    case 6:
+                    case 5:
                         Haiku.getInstance().setShowCommonHitChat(Boolean.valueOf(line));
-                    case 7:
+                    case 6:
                         Haiku.getInstance().setShowGiganticHitChat(Boolean.valueOf(line));
-                    case 8:
+                    case 7:
                         Haiku.getInstance().setShowFlyChat(Boolean.valueOf(line));
-                    case 9:
+                    case 8:
                         Haiku.getInstance().setShowLoggedInChat(Boolean.valueOf(line));
-                    case 10:
+                    case 9:
                         Haiku.getInstance().setShowOtherGiganticHit(Boolean.valueOf(line));
-                    case 11:
+                    case 10:
                         Haiku.getInstance().setShowSaveChat(Boolean.valueOf(line));
-                    case 12:
+                    case 11:
                         Haiku.getInstance().setShowGachaCountChat(Boolean.valueOf(line));
-                    case 13:
+                    case 12:
                         Haiku.getInstance().setShowBuffChat(Boolean.valueOf(line));
-                    case 14:
+                    case 13:
                         Haiku.getInstance().setShowGiganticHitChat(Boolean.valueOf(line));
                 }
             }

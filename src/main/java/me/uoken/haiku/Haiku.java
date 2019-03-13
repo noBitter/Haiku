@@ -29,7 +29,7 @@ public class Haiku {
     private static Haiku instance;
     private ITextComponent addChatMessage;
     public static final ExecutorService THREAD_POOL;
-    private boolean showBuffCounter = true, showRankingCounter = true, showGiganticCounter = true;
+    private boolean showBuffCounter = true, showRankingCounter = true;
     private boolean showGui = false;
     private boolean showGuiSecond = false;
     private boolean showFlyChat = false;
@@ -240,20 +240,12 @@ public class Haiku {
         return this.showRankingCounter;
     }
 
-    public boolean isShowGiganticCounter() {
-        return this.showGiganticCounter;
-    }
-
     public void setShowBuffCounter(boolean showBuffCounter) {
         this.showBuffCounter = showBuffCounter;
     }
 
     public void setShowRankingCounter(boolean showRankingCounter) {
         this.showRankingCounter = showRankingCounter;
-    }
-
-    public void setShowGiganticCounter(boolean showGiganticCounter) {
-        this.showGiganticCounter = showGiganticCounter;
     }
 
     public void setShowGui(boolean showGui) {
