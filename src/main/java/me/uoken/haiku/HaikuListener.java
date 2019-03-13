@@ -190,7 +190,7 @@ public class HaikuListener {
         }
 
         if(!Haiku.getInstance().isShowGiganticHitChat() &&
-                (line.startsWith("おめでとう！！！！！Gigantic☆大当たり！"))){
+                (line.startsWith(Reference.GT_WINNING_LINE))){
             event.setCanceled(true);
         }
     }

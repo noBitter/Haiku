@@ -10,6 +10,7 @@ public class Reference {
     public static final String RANKING_LINE = "--------------30分間整地ランキング--------------";
     public static final String GT_TRIGGER_LINE = "がガチャでGigantic☆大当たり！";
     public static final String GT_NAME_LINE = "を引きました！おめでとうございます！";
+    public static final String GT_WINNING_LINE = "おめでとう！！！！！Gigantic☆大当たり！";
     public static final String WINNING_LINE = "おめでとう！当たり！";
     public static final String GREAT_WINNING_LINE_1 = "おめでとう‼大当たり！";
     public static final String GREAT_WINNING_LINE_2 = "おめでとう！！大当たり！";

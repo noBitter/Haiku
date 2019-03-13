@@ -1,7 +1,7 @@
 # Haiku  
 play.seichi.click向けのMinecraft MODです  
 Forge 1.10.2で使えます  
-ダウンロード バージョン1.0.2: <http://www.mediafire.com/file/nvhj8uknm0m7u6u/Haiku-1.0.2.jar/file>  
+ダウンロード バージョン1.0.2: <http://www.mediafire.com/file/w8ddcu9lm8i2xd6/Haiku-1.0.2.jar/file>  
 **機能**  
 1. チャットセッティング  
 採掘速度上昇カウンター、ランキングカウンター、ギガンティックカウンターをチャットに表示します  
@@ -17,7 +17,8 @@ Forge 1.10.2で使えます
 * おめでとう‼︎大当たり！  
 * 〜がログインしました  
 * Fly効果は無期限で継続中です  
+* おめでとう！！！！！Gigantic☆大当たり！  
 * 〜がガチャでGigantic☆大当たり！, 〜を引きました！おめでとうございます！（自分または他のプレイヤー）  
 
 3. GUI  
-ゲーム内コマンド/haikuで上記1,2の設定を変えられるGUIを表示します
+ゲーム内コマンド/haikuで上記1.~2.の設定を変えられるGUIを表示します
