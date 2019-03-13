@@ -188,5 +188,10 @@ public class HaikuListener {
 
             Haiku.getInstance().setRemoveGiganticNameChat(false);
         }
+
+        if(!Haiku.getInstance().isShowGiganticHitChat() &&
+                (line.startsWith("おめでとう！！！！！Gigantic☆大当たり！"))){
+            event.setCanceled(true);
+        }
     }
 }
