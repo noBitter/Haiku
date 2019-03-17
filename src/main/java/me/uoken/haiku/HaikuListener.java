@@ -138,7 +138,8 @@ public class HaikuListener {
             event.setCanceled(true);
         }
 
-        if(!Haiku.getInstance().isShowFlyChat() && line.equals(Reference.UNLIMITED_FLYING_LINE)){
+        if(!Haiku.getInstance().isShowFlyChat() &&
+                (line.equals(Reference.UNLIMITED_FLYING_LINE) || line.equals(Reference.UNLIMITED_FLYING_AFK_LINE))){
             event.setCanceled(true);
         }
 

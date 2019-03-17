@@ -17,6 +17,7 @@ public class Reference {
     public static final String TIPS_LINE = "[Tips]";
     public static final String CLEARLAG_LINE = "[ClearLag]";
     public static final String UNLIMITED_FLYING_LINE = "Fly効果は無期限で継続中です";
+    public static final String UNLIMITED_FLYING_AFK_LINE = "放置時間中のFLYは無期限で継続中です(経験値は消費しません)";
     public static final String PLAYER_LOGGEDIN_LINE = "がログインしました";
     public static final String SAVING_PLAYERDATA_LINE = "プレイヤーデータセーブ中…";
     public static final String SAVED_PLAYERDATA_LINE = "プレイヤーデータセーブ完了";

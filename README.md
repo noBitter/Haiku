@@ -1,7 +1,7 @@
 # Haiku  
 play.seichi.click向けのMinecraft MODです  
 Forge 1.10.2で使えます  
-ダウンロード バージョン1.0.2: <http://www.mediafire.com/file/nxl3l55vtp5d4n5/Haiku-1.0.2.jar/file>  
+ダウンロード バージョン1.0.2: <http://www.mediafire.com/file/1h1jlto9mjj16ja/Haiku-1.0.2.jar/file>  
 **機能**  
 1. チャットセッティング  
 採掘速度上昇カウンター、ランキングカウンターをチャットに表示します  
