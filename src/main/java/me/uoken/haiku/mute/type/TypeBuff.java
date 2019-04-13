@@ -1,6 +1,5 @@
 package me.uoken.haiku.mute.type;
 
-import me.uoken.haiku.Reference;
 import me.uoken.haiku.mute.MuteBase;
 
 import java.util.LinkedList;

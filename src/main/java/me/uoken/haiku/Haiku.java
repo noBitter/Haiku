@@ -1,7 +1,6 @@
 package me.uoken.haiku;
 
 import me.uoken.haiku.command.HaikuCommand;
-import me.uoken.haiku.gui.MuteGui;
 import me.uoken.haiku.mute.MuteBase;
 import me.uoken.haiku.util.ConfigUtil;
 import net.minecraft.client.Minecraft;
@@ -12,14 +11,16 @@ import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod(modid = Reference.MODID, useMetadata = true)
+@Mod(modid = Haiku.MODID, version = Haiku.MOD_VERSION, useMetadata = true)
 public class Haiku {
     private Minecraft mc = Minecraft.getMinecraft();
     private ConfigUtil configUtil = new ConfigUtil(this.mc.mcDataDir.toString());
     private HaikuEvents haikuEvents = new HaikuEvents();
+
+    public static final String MODID = "haiku";
+    public static final String MOD_NAME = "Haiku";
+    public static final String MOD_VERSION = "1.1.1";
 
     @Mod.Instance
     private static Haiku instance;
@@ -28,9 +29,9 @@ public class Haiku {
     private static ModMetadata modMetadata;
 
     private void loadMeta(ModMetadata modMetadata){
-        modMetadata.name = Reference.NAME;
-        modMetadata.modId = Reference.MODID;
-        modMetadata.version = Reference.VERSION;
+        modMetadata.modId = MODID;
+        modMetadata.name = MOD_NAME;
+        modMetadata.version = MOD_VERSION;
         modMetadata.authorList.add("uoken");
         modMetadata.description = "/haiku - Open GUI.";
         modMetadata.url = "https://github.com/noBitter/Haiku";
