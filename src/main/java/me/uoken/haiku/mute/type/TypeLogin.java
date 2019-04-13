@@ -7,8 +7,10 @@ import java.util.regex.Pattern;
 
 public class TypeLogin extends MuteBase {
     private boolean enabled = true;
+    private boolean showFollowed = true;
 
     private Pattern loginPattern = Pattern.compile("(?<player>\\S{1,16}) がログインしました");
+    private Pattern[] followedPattern = {};
 
     @Override
     public String getName() {
@@ -32,6 +34,16 @@ public class TypeLogin extends MuteBase {
 
     @Override
     public LinkedList<String> getDescription() {
-        return asLinked("§7unchama がログインしました");
+        return asLinked("§7unchama がログインしました", "", "");
+    }
+
+    @Override
+    public void checkFollowed(String message) {
+        this.showFollowed = checkFollowedManager(followedPattern, message);
+    }
+
+    @Override
+    public boolean isShowFollowed() {
+        return this.showFollowed;
     }
 }

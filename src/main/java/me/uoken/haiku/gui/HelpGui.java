@@ -24,13 +24,15 @@ public class HelpGui extends GuiScreen {
 
         int[] position = {this.height / 2 - 60};
         MuteBase.getMuteMaps().values().stream().skip((this.pageNumber - 1) * 3).limit(3).forEach(base -> {
-            drawCenteredString(this.fontRenderer, "§l" + base.getName(), this.width / 2, position[0], Color.WHITE.getRGB());
-            position[0] += 14;
-            base.getDescription().forEach(text -> {
-                drawCenteredString(this.fontRenderer, text, this.width / 2, position[0], Color.WHITE.getRGB());
-                position[0] += 10;
-            });
-            position[0] += 14;
+            if(base.hasDescription()) {
+                drawCenteredString(this.fontRenderer, "§l" + base.getName(), this.width / 2, position[0], Color.WHITE.getRGB());
+                position[0] += 14;
+                base.getDescription().forEach(text -> {
+                    drawCenteredString(this.fontRenderer, text, this.width / 2, position[0], Color.WHITE.getRGB());
+                    position[0] += 10;
+                });
+                position[0] += 14;
+            }
         });
     }
 

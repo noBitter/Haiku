@@ -7,8 +7,10 @@ import java.util.regex.Pattern;
 
 public class TypeGachaCounter extends MuteBase {
     private boolean enabled = true;
+    private boolean showFollowed = true;
 
     private Pattern gachaCounterPattern = Pattern.compile("\\d{1,2}回ガチャを回しました。");
+    private Pattern[] followedPattern = {};
 
     @Override
     public String getName() {
@@ -32,6 +34,16 @@ public class TypeGachaCounter extends MuteBase {
 
     @Override
     public LinkedList<String> getDescription() {
-        return asLinked("§b64回ガチャを回しました。");
+        return asLinked("§b64回ガチャを回しました。", "", "");
+    }
+
+    @Override
+    public void checkFollowed(String message) {
+        this.showFollowed = checkFollowedManager(followedPattern, message);
+    }
+
+    @Override
+    public boolean isShowFollowed() {
+        return this.showFollowed;
     }
 }

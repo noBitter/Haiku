@@ -7,8 +7,10 @@ import java.util.regex.Pattern;
 
 public class TypeTips extends MuteBase {
     private boolean enabled = true;
+    private boolean showFollowed = true;
 
     private Pattern tipsPattern = Pattern.compile("\\[Tips].*");
+    private Pattern[] followedPattern = {};
 
     @Override
     public String getName() {
@@ -32,6 +34,16 @@ public class TypeTips extends MuteBase {
 
     @Override
     public LinkedList<String> getDescription() {
-        return asLinked("§6[Tips]§f接続時間はメイン・整地専用・公共施設サーバにいると増えます。");
+        return asLinked("§6[Tips]§f接続時間はメイン・整地専用・公共施設サーバにいると増えます。", "", "");
+    }
+
+    @Override
+    public void checkFollowed(String message) {
+        this.showFollowed = checkFollowedManager(followedPattern, message);
+    }
+
+    @Override
+    public boolean isShowFollowed() {
+        return this.showFollowed;
     }
 }

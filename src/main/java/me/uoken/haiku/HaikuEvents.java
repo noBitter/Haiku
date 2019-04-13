@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 public class HaikuEvents {
     private Haiku mod = Haiku.getInstance();
 
-    private static boolean showNextLine = true;
     private boolean onSeichiClick = false;
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -22,28 +21,23 @@ public class HaikuEvents {
             return;
         }
 
+        String playerName = mod.getMc().player.getDisplayNameString();
         String line = TextFormatting.getTextWithoutFormattingCodes(event.getMessage().getUnformattedText());
 
-        if(!showNextLine){
-            event.setCanceled(true);
-            showNextLine = true;
-            return;
-        }
-
         for(MuteBase type : MuteBase.getMuteMaps().values()){
-            if(!type.isEnabled() && type.shouldMute(line, mod.getMc().player.getDisplayNameString())){
-                event.setCanceled(true);
-                break;
+            if(!type.isEnabled()){
+                if(!type.isShowFollowed()){
+                    type.checkFollowed(line);
+                    event.setCanceled(true);
+                    break;
+                }
+
+                if(type.shouldMute(line, playerName)) {
+                    event.setCanceled(true);
+                    break;
+                }
             }
         }
-    }
-
-    public void setShowNextLine(boolean showNextLine) {
-        HaikuEvents.showNextLine = showNextLine;
-    }
-
-    public boolean isShowNextLine() {
-        return showNextLine;
     }
 
     @SubscribeEvent

@@ -7,8 +7,10 @@ import java.util.regex.Pattern;
 
 public class TypeCommonWin extends MuteBase {
     private boolean enabled = true;
+    private boolean showFollowed = true;
 
     private Pattern commonWinPattern = Pattern.compile("おめでとう！当たり！.*");
+    private Pattern[] followedPattern = {};
 
     @Override
     public String getName() {
@@ -32,6 +34,16 @@ public class TypeCommonWin extends MuteBase {
 
     @Override
     public LinkedList<String> getDescription() {
-        return asLinked("§eおめでとう！当たり！");
+        return asLinked("§eおめでとう！当たり！", "", "");
+    }
+
+    @Override
+    public void checkFollowed(String message) {
+        this.showFollowed = checkFollowedManager(followedPattern, message);
+    }
+
+    @Override
+    public boolean isShowFollowed() {
+        return this.showFollowed;
     }
 }

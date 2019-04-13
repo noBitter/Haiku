@@ -7,9 +7,11 @@ import java.util.regex.Pattern;
 
 public class TypeGreatWin extends MuteBase {
     private boolean enabled = true;
+    private boolean showFollowed = true;
 
     private Pattern greatWinPattern1 = Pattern.compile("おめでとう‼大当たり！.*");
     private Pattern greatWinPattern2 = Pattern.compile("おめでとう！！大当たり！.*");
+    private Pattern[] followedPattern = {};
 
     @Override
     public String getName() {
@@ -18,8 +20,7 @@ public class TypeGreatWin extends MuteBase {
 
     @Override
     public boolean shouldMute(String message, String name) {
-        return this.greatWinPattern1.matcher(message).matches() ||
-                this.greatWinPattern2.matcher(message).matches();
+        return this.greatWinPattern1.matcher(message).matches() || this.greatWinPattern2.matcher(message).matches();
     }
 
     @Override
@@ -34,6 +35,16 @@ public class TypeGreatWin extends MuteBase {
 
     @Override
     public LinkedList<String> getDescription() {
-        return asLinked("§6おめでとう‼大当たり！");
+        return asLinked("§6おめでとう‼大当たり！", "", "");
+    }
+
+    @Override
+    public void checkFollowed(String message) {
+        this.showFollowed = checkFollowedManager(followedPattern, message);
+    }
+
+    @Override
+    public boolean isShowFollowed() {
+        return this.showFollowed;
     }
 }

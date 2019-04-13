@@ -7,9 +7,11 @@ import java.util.regex.Pattern;
 
 public class TypeSavePlayerData extends MuteBase {
     private boolean enabled = true;
+    private boolean showFollowed = true;
 
     private Pattern savingPlayerDataPattern = Pattern.compile("プレイヤーデータセーブ中…");
     private Pattern savedPlayerDataPattern = Pattern.compile("プレイヤーデータセーブ完了");
+    private Pattern[] followedPattern = {};
 
     @Override
     public String getName() {
@@ -18,8 +20,7 @@ public class TypeSavePlayerData extends MuteBase {
 
     @Override
     public boolean shouldMute(String message, String name) {
-        return this.savingPlayerDataPattern.matcher(message).matches() ||
-                this.savedPlayerDataPattern.matcher(message).matches();
+        return this.savingPlayerDataPattern.matcher(message).matches() || this.savedPlayerDataPattern.matcher(message).matches();
     }
 
     @Override
@@ -34,6 +35,17 @@ public class TypeSavePlayerData extends MuteBase {
 
     @Override
     public LinkedList<String> getDescription() {
-        return  asLinked("§bプレイヤーデータセーブ中…", "§bプレイヤーデータセーブ完了");
+        return  asLinked("§bプレイヤーデータセーブ中…",
+                "§bプレイヤーデータセーブ完了", "");
+    }
+
+    @Override
+    public void checkFollowed(String message) {
+        this.showFollowed = checkFollowedManager(followedPattern, message);
+    }
+
+    @Override
+    public boolean isShowFollowed() {
+        return this.showFollowed;
     }
 }

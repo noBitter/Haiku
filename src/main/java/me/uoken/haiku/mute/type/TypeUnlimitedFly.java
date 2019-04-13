@@ -7,9 +7,11 @@ import java.util.regex.Pattern;
 
 public class TypeUnlimitedFly extends MuteBase {
     private boolean enabled = true;
+    private boolean showFollowed = true;
 
     private Pattern unlimitedFlyingPattern = Pattern.compile("Fly効果は無期限で継続中です");
     private Pattern unlimitedFlyingAfkPattern = Pattern.compile("放置時間中のFLYは無期限で継続中です\\(経験値は消費しません\\)");
+    private Pattern[] followedPattern = {};
 
     @Override
     public String getName() {
@@ -18,8 +20,7 @@ public class TypeUnlimitedFly extends MuteBase {
 
     @Override
     public boolean shouldMute(String message, String name) {
-        return this.unlimitedFlyingPattern.matcher(message).matches() ||
-                this.unlimitedFlyingAfkPattern.matcher(message).matches();
+        return this.unlimitedFlyingPattern.matcher(message).matches() || this.unlimitedFlyingAfkPattern.matcher(message).matches();
     }
 
     @Override
@@ -35,6 +36,16 @@ public class TypeUnlimitedFly extends MuteBase {
     @Override
     public LinkedList<String> getDescription() {
         return  asLinked("§aFly効果は無期限で継続中です",
-                "§7放置時間中のFLYは無期限で継続中です(経験値は消費しません)");
+                "§7放置時間中のFLYは無期限で継続中です(経験値は消費しません)", "");
+    }
+
+    @Override
+    public void checkFollowed(String message) {
+        this.showFollowed = checkFollowedManager(followedPattern, message);
+    }
+
+    @Override
+    public boolean isShowFollowed() {
+        return this.showFollowed;
     }
 }

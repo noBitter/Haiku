@@ -3,6 +3,7 @@ package me.uoken.haiku.mute;
 import me.uoken.haiku.mute.type.*;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public abstract class MuteBase {
     private static final LinkedHashMap<String, MuteBase> muteMaps = new LinkedHashMap<>();
@@ -39,6 +40,7 @@ public abstract class MuteBase {
 
     public abstract String getName();
 
+    // In the case of the type wanna mute multiple lines, set showFollowed to reverse of matches the last pattern in the below method.
     public abstract boolean shouldMute(final String message, final String name);
 
     public final String getIdString(){
@@ -57,10 +59,28 @@ public abstract class MuteBase {
 
     public abstract LinkedList<String> getDescription();
 
+    public final boolean hasDescription() {
+        return getDescription() != null && !getDescription().isEmpty();
+    }
+
     @SafeVarargs
     public final <T> LinkedList<T> asLinked(T... entry){
         LinkedList<T> list = new LinkedList<>();
         list.addAll(Arrays.asList(entry));
         return list;
     }
+
+    public abstract void checkFollowed(String message);
+
+    public boolean checkFollowedManager(Pattern[] patterns, String message){
+        for(Pattern pattern : patterns){
+            if(pattern.matcher(message).matches()){
+                return (pattern == patterns[patterns.length - 1]);
+            }
+        }
+
+        return true;
+    }
+
+    public abstract boolean isShowFollowed();
 }
