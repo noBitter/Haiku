@@ -36,7 +36,8 @@ public class TypeGetPlayerData extends MuteBase {
     @Override
     public LinkedList<String> getDescription() {
         return asLinked("§eプレイヤーデータ取得中。完了まで動かずお待ち下さい…",
-                "§aプレイヤーデータ取得完了", "");
+                "§eしばらくお待ちください…",
+                "§aプレイヤーデータ取得完了");
     }
 
     @Override
